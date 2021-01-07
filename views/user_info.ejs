@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>List of Users</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+<body>
+  <div class="home">
+    <h1>List of Users: </h1>
+    <a href="/login/user/allUsers">Back</a>
+    <form action="/login/user/follow/<%= user.uid %>" method="post">
+      Name: <%= user.fname+" "+ user.lname %><br>
+      EmailId: <%= user.emailId %><br>
+      Contact: <%= user.contact %>
+      <div style="display: block">
+        <input type="radio" value="follow_<%= user.uid %>" <% if(user.following) { %> checked <% } %> name="redirect">
+        Follow<br>
+        <input type="radio" value="unfollow_<%= user.uid %>" <% if(!user.following) { %> checked <% } %>
+          name="redirect">
+        Unfollow
+      </div>
+      <input type="submit" value="Save">
+    </form>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<div class="page">
+  <h2 style="padding-top: 50px;">Welcome, Now Choose Page Accordingly...</h2><br><br>
+  <% if(user) {	%>
+  <a href="/login/user">Home</a>
+  <form method="get" action="/logout">
+    <button>Logout</button>
+  </form>
+  <% } %>
+  <% if(!user) { %>
+  <a href="/login">Login</a>
+  <a href="/register">Register</a>
+  <% } %>
+</div>

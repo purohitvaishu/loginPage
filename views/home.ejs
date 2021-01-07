@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Home Page</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="../js/likeUnlike.js"></script>
+</head>
+
+<body>
+  <div class="home">
+    <h1>Hello <%= user.uname%></h1>
+    <a href="/">Main</a>
+    <a href="/login/user/allUsers">Users List</a>
+    <a href="/logout">Logout</a>
+    <br><br>Profile:-
+    <ul>
+      <li>fname: <%= user.fname%></li>
+      <li>lname: <%= user.lname%></li>
+      <li>Email: <%= user.emailId%></li>
+      <li>Password: <%= user.password%></li>
+      <li>Contact: <%= user.contact%></li>
+    </ul>
+    <form action="/login/user/post" method="POST">
+      <textarea rows="2" cols="40" name="comment"></textarea>
+      <input type="submit" value="Post" style="width: 60px;">
+    </form><br>
+    <% if(post) { %>
+    <div class="block">
+      <% post.forEach((post) => { %>
+      <div class="postUser">
+        <div><%= post.postUname %></div>
+        <div><%= post.comment %></div><br>
+        <div id="comments">
+          <div id="c_name_<%= post.id %>"></div>
+          <div id="c_comment_<%= post.id %>"></div>
+          <% if(comment) %>
+          <% comment.forEach((comment) => { %>
+          <% if(comment.c_id === post.id) { %>
+          <div><%= comment.comment_sender_name %></div>
+          <div><%= comment.comment %></div>
+        </div>
+        <% }}) %>
+        <div class="commentBtn">
+          <input type="button" onclick="like(this.id)" value="Like" id="like_<%= post.id %>">
+          <span id="likes_<%= post.id %>"><%= post.totalLikes %></span>
+          <input type="button" onclick="like(this.id)" value="Unike" id="unlike_<%= post.id %>">
+          <span id="unlikes_<%= post.id %>"><%= post.totalUnlikes %></span>
+        </div><br><br>
+        <textarea rows="2" cols="40" id="c_id" name="comment_id" placeholder="write a comment"></textarea>
+        <input type="button" value="Comment" onclick="comment(this.id)"
+          id="<%= post.postUname %>_<%= post.id %>">
+      </div><br>
+    </div>
+    <% }) %>
+    <% } else { %>
+    <p>Nothing to show..</p>
+    <% } %>
+  </div>
+</body>
+
+</html>

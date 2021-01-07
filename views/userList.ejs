@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>List of Users</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+<body>
+  <div class="home">
+    <h1>List of Users: </h1>
+    <a href="/login/user">Back</a>
+    <a href="/logout">Logout</a><br>
+    follow Count : <%= count.followC %><br>
+    unfollow Count : <%= count.unfollowC %>
+    <ul>
+      <% user.forEach((user) => { %>
+      <li>
+        <a href="/login/user/user-info/<%= user.uname %>"
+          style="text-decoration: none"><%= user.fname+" "+ user.lname %></a>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login page</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="popupS.css">
+</head>
+
+<body>
+  <div class="login">
+    <h2>Welcome to Login Page</h2>
+    <form action="/checkUser" method="post">
+      <input type="text" placeholder="Username" id="username" name="uname">
+      <input type="password" placeholder="password" id="password" name="pass">
+      <input type="submit" value="Login">
+      <h4>OR</h4>
+      <a href="/register" class="btn btn-default">Register</a>
+    </form><br>
+  </div>
+  <div class="link">
+    <a href="/auth/email">Signup using Emailid</a>
+    <a href="/auth/phone">Signup using Phone number</a><br>
+    <a href="/auth/google">Signup using Google</a>
+    <a href="/auth/facebook">Signup using Facebook</a>
+  </div>
+</body>
+
+</html>
